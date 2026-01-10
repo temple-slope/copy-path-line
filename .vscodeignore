@@ -1,8 +1,14 @@
 .vscode/**
 .vscode-test/**
+.claude/**
 src/**
 .gitignore
 tsconfig.json
 **/*.ts
 **/.git/**
 **/node_modules/**
+Gemini_Generated_Image_*.png
+CLAUDE.md
+PUBLISHING.md
+PRE_PUBLISH_CHECKLIST.md
+*.vsix
