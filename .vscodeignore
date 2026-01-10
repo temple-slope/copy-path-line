@@ -9,6 +9,5 @@ tsconfig.json
 **/node_modules/**
 Gemini_Generated_Image_*.png
 CLAUDE.md
-PUBLISHING.md
-PRE_PUBLISH_CHECKLIST.md
+docs/**
 *.vsix

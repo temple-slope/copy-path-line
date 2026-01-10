@@ -3,5 +3,4 @@ node_modules/
 *.vsix
 .vscode-test/
 CLAUDE.md
-PUBLISHING.md
-PRE_PUBLISH_CHECKLIST.md
+docs/**
