@@ -8,7 +8,7 @@
   "icon": "icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kazumaterasaka/copy-path-line"
+    "url": "https://github.com/temple-slope/copy-path-line"
   },
   "engines": {
     "vscode": "^1.85.0"
