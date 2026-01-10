@@ -1,0 +1,46 @@
+{
+  "name": "copy-path-line",
+  "displayName": "Copy Path with Line",
+  "description": "Copy relative file path with line number to clipboard",
+  "version": "0.0.1",
+  "publisher": "kazumaterasaka",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kazumaterasaka/copy-path-line"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "copy-path-line.copy",
+        "title": "Copy Relative Path with Line Number"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "copy-path-line.copy",
+        "key": "shift+alt+cmd+l",
+        "mac": "shift+alt+cmd+l",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.0"
+  }
+}
