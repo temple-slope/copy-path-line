@@ -12,8 +12,8 @@ export function activate(context: vscode.ExtensionContext) {
     const selection = editor.selection;
 
     let result: string;
-    if (selection.isEmpty) {
-      result = `${relativePath}:${selection.active.line + 1}`;
+    if (selection.start.line === selection.end.line) {
+      result = `${relativePath}:${selection.start.line + 1}`;
     } else {
       result = `${relativePath}:${selection.start.line + 1}:${selection.end.line + 1}`;
     }
