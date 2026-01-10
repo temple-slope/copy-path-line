@@ -15,9 +15,9 @@ Copy relative file path with line number to clipboard.
 
 ## Keybinding
 
-| Platform | Shortcut |
-|----------|----------|
-| Mac | `Shift+Alt+Cmd+L` |
+| Platform | Shortcut          |
+| -------- | ----------------- |
+| Mac      | `Shift+Alt+Cmd+L` |
 
 ## License
 
