@@ -2,7 +2,7 @@
 
 Copy relative file path with line number to clipboard.
 
-![Demo](demo.gif)
+![Demo](https://raw.githubusercontent.com/temple-slope/copy-path-line/main/demo.gif)
 
 ## Features
 
