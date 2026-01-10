@@ -2,6 +2,8 @@
 
 Copy relative file path with line number to clipboard.
 
+![Demo](demo.gif)
+
 ## Features
 
 - Copy file path with current line number: `src/file.ts:10`
