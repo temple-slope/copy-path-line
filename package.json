@@ -2,7 +2,7 @@
   "name": "copy-path-line",
   "displayName": "Copy Path with Line",
   "description": "Copy relative file path with line number to clipboard",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "temple-slope",
   "license": "MIT",
   "icon": "icon.png",
