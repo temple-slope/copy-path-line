@@ -1,8 +1,16 @@
 # Copy Path with Line
 
+[![VS Marketplace](https://img.shields.io/visual-studio-marketplace/v/temple-slope.copy-path-line)](https://marketplace.visualstudio.com/items?itemName=temple-slope.copy-path-line)
+[![Open VSX](https://img.shields.io/open-vsx/v/temple-slope/copy-path-line)](https://open-vsx.org/extension/temple-slope/copy-path-line)
+
 Copy relative file path with line number to clipboard.
 
 ![Demo](https://raw.githubusercontent.com/temple-slope/copy-path-line/main/demo.gif)
+
+## Install
+
+- [VS Marketplace](https://marketplace.visualstudio.com/items?itemName=temple-slope.copy-path-line)
+- [Open VSX](https://open-vsx.org/extension/temple-slope/copy-path-line)
 
 ## Features
 
