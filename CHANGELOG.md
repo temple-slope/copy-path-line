@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.1] - 2026-05-24
+
+### Fixed
+- Align `engines.vscode` with `@types/vscode` (^1.116.0) so `vsce package` no longer rejects the build. This unblocks the v0.1.0 release that failed at the publish step.
+
+### Changed
+- Minimum supported VSCode version is now 1.116 (was 1.85). The extension itself does not require new API surface; this aligns the engine requirement with the type definitions already in use.
+
 ## [0.1.0] - 2026-05-24
 
 ### Added
