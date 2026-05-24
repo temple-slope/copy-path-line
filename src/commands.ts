@@ -17,7 +17,13 @@ function previewForToast(value: string): string {
   return oneLine.slice(0, TOAST_PREVIEW_MAX - 1) + '…';
 }
 
-async function tryExitVimVisualMode(): Promise<void> {
+async function tryExitVimVisualMode(editor: vscode.TextEditor): Promise<void> {
+  // Heuristic: only fire when there is a non-empty selection. In VSCodeVim,
+  // Visual mode always has a non-empty selection; Insert/Normal modes do not.
+  // Without this guard, vim_escape would also exit Insert mode mid-typing.
+  if (editor.selection.isEmpty) {
+    return;
+  }
   try {
     await vscode.commands.executeCommand('extension.vim_escape');
   } catch {
@@ -25,10 +31,13 @@ async function tryExitVimVisualMode(): Promise<void> {
   }
 }
 
-async function copyAndNotify(value: string): Promise<void> {
+async function copyAndNotify(
+  value: string,
+  editor: vscode.TextEditor,
+): Promise<void> {
   await vscode.env.clipboard.writeText(value);
   if (readConfig().exitVisualModeAfterCopy) {
-    await tryExitVimVisualMode();
+    await tryExitVimVisualMode(editor);
   }
   vscode.window.showInformationMessage(`Copied: ${previewForToast(value)}`);
 }
@@ -49,7 +58,7 @@ export async function copyPathLine(): Promise<void> {
   }
   const relPath = vscode.workspace.asRelativePath(editor.document.uri);
   const result = formatPathLine(relPath, editor.selection, readConfig());
-  await copyAndNotify(result);
+  await copyAndNotify(result, editor);
 }
 
 export async function copyRelativePath(): Promise<void> {
@@ -59,7 +68,7 @@ export async function copyRelativePath(): Promise<void> {
   }
   const relPath = vscode.workspace.asRelativePath(editor.document.uri);
   const result = formatPath(relPath, readConfig());
-  await copyAndNotify(result);
+  await copyAndNotify(result, editor);
 }
 
 export async function copyFullPath(): Promise<void> {
@@ -69,7 +78,7 @@ export async function copyFullPath(): Promise<void> {
   }
   const absPath = editor.document.uri.fsPath;
   const result = formatFullPath(absPath, readConfig());
-  await copyAndNotify(result);
+  await copyAndNotify(result, editor);
 }
 
 export async function copyAsMarkdown(): Promise<void> {
@@ -84,5 +93,5 @@ export async function copyAsMarkdown(): Promise<void> {
     editor.document,
     readConfig(),
   );
-  await copyAndNotify(result);
+  await copyAndNotify(result, editor);
 }

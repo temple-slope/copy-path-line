@@ -30,6 +30,25 @@ export function formatFullPath(absPath: string, cfg: FormatConfig): string {
   return `${prefix(cfg)}${absPath}`;
 }
 
+function fenceFor(code: string): string {
+  // CommonMark: a fenced block's closing delimiter must be at least as long as
+  // the opening, and any backtick run inside the body must be shorter than the
+  // fence. Pick fence length = max(3, longest backtick run + 1).
+  let maxRun = 0;
+  let currentRun = 0;
+  for (const ch of code) {
+    if (ch === '`') {
+      currentRun++;
+      if (currentRun > maxRun) {
+        maxRun = currentRun;
+      }
+    } else {
+      currentRun = 0;
+    }
+  }
+  return '`'.repeat(Math.max(3, maxRun + 1));
+}
+
 export function formatMarkdown(
   relPath: string,
   selection: Selection,
@@ -46,5 +65,6 @@ export function formatMarkdown(
     code = document.getText(selection);
   }
 
-  return `${pathLabel}\n\`\`\`${language}\n${code}\n\`\`\``;
+  const fence = fenceFor(code);
+  return `${pathLabel}\n${fence}${language}\n${code}\n${fence}`;
 }
