@@ -1,8 +1,8 @@
 {
   "name": "copy-path-line",
   "displayName": "Copy Path with Line",
-  "description": "Copy relative file path with line number to clipboard",
-  "version": "0.0.5",
+  "description": "Copy file paths and code snippets in Claude Code-friendly formats",
+  "version": "0.1.0",
   "publisher": "temple-slope",
   "license": "MIT",
   "icon": "icon.png",
@@ -21,7 +21,10 @@
     "path",
     "line",
     "clipboard",
-    "file path"
+    "file path",
+    "claude-code",
+    "markdown",
+    "snippet"
   ],
   "galleryBanner": {
     "color": "#1e1e1e",
@@ -33,7 +36,19 @@
     "commands": [
       {
         "command": "copy-path-line.copy",
-        "title": "Copy Relative Path with Line Number"
+        "title": "Copy Path with Line"
+      },
+      {
+        "command": "copy-path-line.copyAsMarkdown",
+        "title": "Copy Path with Line as Markdown"
+      },
+      {
+        "command": "copy-path-line.copyRelativePath",
+        "title": "Copy Relative Path"
+      },
+      {
+        "command": "copy-path-line.copyFullPath",
+        "title": "Copy Full Path"
       }
     ],
     "keybindings": [
@@ -42,8 +57,47 @@
         "key": "shift+alt+cmd+l",
         "mac": "shift+alt+cmd+l",
         "when": "editorTextFocus"
+      },
+      {
+        "command": "copy-path-line.copyAsMarkdown",
+        "key": "shift+alt+cmd+m",
+        "mac": "shift+alt+cmd+m",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "copy-path-line.copyRelativePath",
+        "key": "shift+alt+cmd+c",
+        "mac": "shift+alt+cmd+c",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "copy-path-line.copyFullPath",
+        "key": "shift+alt+cmd+f",
+        "mac": "shift+alt+cmd+f",
+        "when": "editorTextFocus"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Copy Path with Line",
+      "properties": {
+        "copy-path-line.atPrefix": {
+          "type": "boolean",
+          "default": true,
+          "description": "Prepend '@' to copied paths (Claude Code compatible). Set false for plain paths."
+        },
+        "copy-path-line.rangeSeparator": {
+          "type": "string",
+          "enum": ["dash", "colon"],
+          "default": "dash",
+          "description": "Separator for line ranges. 'dash' → 15-19, 'colon' → 15:19."
+        },
+        "copy-path-line.exitVisualModeAfterCopy": {
+          "type": "boolean",
+          "default": true,
+          "description": "After copying, attempt to exit Vim visual mode (calls 'extension.vim_escape'). No effect if VSCodeVim is not installed."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
