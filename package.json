@@ -2,7 +2,7 @@
   "name": "copy-path-line",
   "displayName": "Copy Path with Line",
   "description": "Copy file paths and code snippets in Claude Code-friendly formats",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "temple-slope",
   "license": "MIT",
   "icon": "icon.png",
@@ -11,7 +11,7 @@
     "url": "https://github.com/temple-slope/copy-path-line"
   },
   "engines": {
-    "vscode": "^1.116.0"
+    "vscode": "^1.85.0"
   },
   "categories": [
     "Other"
@@ -87,7 +87,10 @@
         },
         "copy-path-line.rangeSeparator": {
           "type": "string",
-          "enum": ["dash", "colon"],
+          "enum": [
+            "dash",
+            "colon"
+          ],
           "default": "dash",
           "description": "Separator for line ranges. 'dash' → 15-19, 'colon' → 15:19."
         },
@@ -106,7 +109,7 @@
     "lint": "eslint src"
   },
   "devDependencies": {
-    "@types/vscode": "^1.116.0",
+    "@types/vscode": "^1.85.0",
     "@types/node": "^20.0.0",
     "typescript": "^6.0.3"
   }
