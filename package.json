@@ -11,7 +11,7 @@
     "url": "https://github.com/temple-slope/copy-path-line"
   },
   "engines": {
-    "vscode": "^1.116.0"
+    "vscode": "^1.85.0"
   },
   "categories": [
     "Other"
@@ -106,7 +106,7 @@
     "lint": "eslint src"
   },
   "devDependencies": {
-    "@types/vscode": "^1.116.0",
+    "@types/vscode": "^1.85.0",
     "@types/node": "^20.0.0",
     "typescript": "^6.0.3"
   }
