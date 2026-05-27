@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.2.0] - 2026-05-27
+
+### Added
+- `Copy GitHub URL` command (`Shift+Alt+Cmd+G`) that produces a GitHub permalink with the line range, e.g. `https://github.com/<owner>/<repo>/blob/<sha>/<path>#L10-L25`.
+- Settings:
+  - `copy-path-line.gitRef` (`"commit"` | `"branch"`, default `"commit"`) — embed the current HEAD SHA (permalink) or the current branch name (mutable).
+  - `copy-path-line.gitRemote` (string, default `"origin"`) — which git remote to read the URL from.
+- New Neovim plugin under `nvim/` with feature parity: `:CopyPathLine`, `:CopyPathLineMarkdown`, `:CopyRelativePath`, `:CopyFullPath`, `:CopyGitUrl`. Default keymaps: `<C-S-A-l/m/c/f/g>`.
+
+### Notes
+- The GitHub URL line fragment always uses `#L<start>-L<end>` regardless of `rangeSeparator` (GitHub's convention).
+- Non-GitHub remotes currently produce a warning. GitLab/Bitbucket support is a follow-up.
+
 ## [0.1.1] - 2026-05-24
 
 ### Fixed

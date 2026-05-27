@@ -2,7 +2,7 @@
   "name": "copy-path-line",
   "displayName": "Copy Path with Line",
   "description": "Copy file paths and code snippets in Claude Code-friendly formats",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "publisher": "temple-slope",
   "license": "MIT",
   "icon": "icon.png",
