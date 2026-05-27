@@ -4,6 +4,7 @@ import {
   copyRelativePath,
   copyFullPath,
   copyAsMarkdown,
+  copyGitUrl,
 } from './commands';
 
 export function activate(context: vscode.ExtensionContext) {
@@ -12,6 +13,7 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.commands.registerCommand('copy-path-line.copyAsMarkdown', copyAsMarkdown),
     vscode.commands.registerCommand('copy-path-line.copyRelativePath', copyRelativePath),
     vscode.commands.registerCommand('copy-path-line.copyFullPath', copyFullPath),
+    vscode.commands.registerCommand('copy-path-line.copyGitUrl', copyGitUrl),
   );
 }
 

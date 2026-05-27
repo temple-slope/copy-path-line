@@ -49,6 +49,10 @@
       {
         "command": "copy-path-line.copyFullPath",
         "title": "Copy Full Path"
+      },
+      {
+        "command": "copy-path-line.copyGitUrl",
+        "title": "Copy GitHub URL"
       }
     ],
     "keybindings": [
@@ -75,6 +79,12 @@
         "key": "shift+alt+cmd+f",
         "mac": "shift+alt+cmd+f",
         "when": "editorTextFocus"
+      },
+      {
+        "command": "copy-path-line.copyGitUrl",
+        "key": "shift+alt+cmd+g",
+        "mac": "shift+alt+cmd+g",
+        "when": "editorTextFocus"
       }
     ],
     "configuration": {
@@ -98,6 +108,17 @@
           "type": "boolean",
           "default": true,
           "description": "After copying, attempt to exit Vim visual mode (calls 'extension.vim_escape'). No effect if VSCodeVim is not installed."
+        },
+        "copy-path-line.gitRef": {
+          "type": "string",
+          "enum": ["commit", "branch"],
+          "default": "commit",
+          "description": "Ref used in the GitHub URL. 'commit' = current HEAD SHA (permalink). 'branch' = current branch name (mutable)."
+        },
+        "copy-path-line.gitRemote": {
+          "type": "string",
+          "default": "origin",
+          "description": "Remote to read the repository URL from."
         }
       }
     }
