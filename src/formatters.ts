@@ -1,5 +1,7 @@
 import type { Selection, TextDocument } from 'vscode';
 import type { FormatConfig } from './config';
+import type { GitInfo } from './git';
+import { buildGitHubUrl } from './git-url';
 
 function prefix(cfg: FormatConfig): string {
   return cfg.atPrefix ? '@' : '';
@@ -67,4 +69,19 @@ export function formatMarkdown(
 
   const fence = fenceFor(code);
   return `${pathLabel}\n${fence}${language}\n${code}\n${fence}`;
+}
+
+export interface LineRange {
+  startLine: number; // 1-based
+  endLine: number;   // 1-based, inclusive
+}
+
+export function formatGitUrl(info: GitInfo, range: LineRange): string {
+  return buildGitHubUrl({
+    httpsBase: info.remoteUrl,
+    ref: info.ref,
+    pathFromRoot: info.pathFromRoot,
+    startLine: range.startLine,
+    endLine: range.endLine,
+  });
 }
