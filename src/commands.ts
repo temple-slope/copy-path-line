@@ -5,7 +5,9 @@ import {
   formatPath,
   formatFullPath,
   formatMarkdown,
+  formatGitUrl,
 } from './formatters';
+import { getGitInfo } from './git';
 
 const TOAST_PREVIEW_MAX = 80;
 
@@ -93,5 +95,24 @@ export async function copyAsMarkdown(): Promise<void> {
     editor.document,
     readConfig(),
   );
+  await copyAndNotify(result, editor);
+}
+
+export async function copyGitUrl(): Promise<void> {
+  const editor = requireEditor();
+  if (!editor) {
+    return;
+  }
+  const cfg = readConfig();
+  const filePath = editor.document.uri.fsPath;
+  const info = await getGitInfo(filePath, cfg);
+  if (!info.ok) {
+    vscode.window.showWarningMessage(`Copy Git URL: ${info.error}`);
+    return;
+  }
+  const result = formatGitUrl(info.value, {
+    startLine: editor.selection.start.line + 1,
+    endLine: editor.selection.end.line + 1,
+  });
   await copyAndNotify(result, editor);
 }
