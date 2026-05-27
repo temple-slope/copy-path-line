@@ -14,7 +14,7 @@ Copy file paths and code snippets in **Claude Code-friendly formats**. Designed 
 
 ## Features
 
-Four commands, all defaulting to a `@`-prefixed format that Claude Code resolves as a file reference.
+Five commands. The four path-based ones default to a `@`-prefixed format that Claude Code resolves as a file reference; the fifth produces a GitHub permalink for sharing.
 
 | Command | Default output | Default keybinding (Mac) |
 | --- | --- | --- |
@@ -22,6 +22,7 @@ Four commands, all defaulting to a `@`-prefixed format that Claude Code resolves
 | Copy Path with Line as Markdown | path label + fenced code block | `Shift+Alt+Cmd+M` |
 | Copy Relative Path | `@src/file.ts` | `Shift+Alt+Cmd+C` |
 | Copy Full Path | `@/Users/.../src/file.ts` | `Shift+Alt+Cmd+F` |
+| Copy GitHub URL | `https://github.com/.../blob/<sha>/src/file.ts#L10-L25` | `Shift+Alt+Cmd+G` |
 
 ### Markdown output example
 
@@ -47,6 +48,8 @@ Paste it into Claude Code and the model gets both the file reference and the exa
 | `copy-path-line.atPrefix` | `true` | Prepend `@` to copied paths. Set `false` for plain paths. |
 | `copy-path-line.rangeSeparator` | `"dash"` | Range separator. `"dash"` → `15-19`, `"colon"` → `15:19`. |
 | `copy-path-line.exitVisualModeAfterCopy` | `true` | After copying, exit Vim visual mode (calls `extension.vim_escape`). No effect without VSCodeVim. |
+| `copy-path-line.gitRef` | `"commit"` | Ref used in the GitHub URL. `"commit"` = current HEAD SHA (permalink). `"branch"` = current branch name. |
+| `copy-path-line.gitRemote` | `"origin"` | Remote to read the repository URL from. |
 
 To restore the pre-0.1.0 behavior (`src/file.ts:10:25`):
 
@@ -63,8 +66,13 @@ To restore the pre-0.1.0 behavior (`src/file.ts:10:25`):
 | `copy-path-line.copyAsMarkdown` | `Shift+Alt+Cmd+M` |
 | `copy-path-line.copyRelativePath` | `Shift+Alt+Cmd+C` |
 | `copy-path-line.copyFullPath` | `Shift+Alt+Cmd+F` |
+| `copy-path-line.copyGitUrl` | `Shift+Alt+Cmd+G` |
 
 All keybindings can be customized in VSCode's `keybindings.json`. `Shift+Alt+Cmd+F` is the built-in Format Document shortcut and may need rebinding if you want the full-path command on that key.
+
+## Neovim plugin
+
+A Neovim sibling with the same five commands lives under [`nvim/`](./nvim/README.md). See its README for installation and configuration.
 
 ## License
 
