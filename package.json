@@ -109,7 +109,7 @@
     "lint": "eslint src"
   },
   "devDependencies": {
-    "@types/vscode": "^1.85.0",
+    "@types/vscode": "^1.134.0",
     "@types/node": "^20.0.0",
     "typescript": "^6.0.3"
   }
